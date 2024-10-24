@@ -1,0 +1,31 @@
+const express=require('express')
+const app=express()
+
+//middle ware
+
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+
+
+app.get('/',function(req,res){
+res.send("hello fuck");
+})
+
+app.get('/create',function(req,res){
+
+    res.send("fuck world");
+    
+    })
+
+
+app.use(function(err,req,res,next){
+
+    console.error(err.stack);
+    res.status(500).send("Some Thing Broken !")
+
+})
+
+
+
+app.listen(3000);
